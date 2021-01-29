@@ -10,14 +10,14 @@ services:
       - mysql
     environment:
       - "DB_PORT=3306"
-      - "DB_HOST=mysql"
-      - "DB_NAME=go-mysql-crud"
-      - "DB_PASS=12345"
+      - "DB_HOST=localhost"
+      - "DB_NAME=x-charts"
+      - "DB_PASS="
   
   mysql:
-    image: mysql:5.7
+    image: mariadb:latest
     ports:
       - 3306:3306
     volumes:
-      - /mysql:/var/lib/mysql
+      - /Users/songwing/Downloads/workspace/volumes/mydb:/var/lib/mysql
     

@@ -1,7 +1,7 @@
 FROM alpine
 
-COPY dist/go-mysql-crud /bin/
+COPY build/xapi /bin/
 
-EXPOSE 5001
+EXPOSE 8005
 
-ENTRYPOINT [ "/bin/go-mysql-crud" ]
+ENTRYPOINT [ "/bin/xapi" ]

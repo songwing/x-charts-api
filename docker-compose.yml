@@ -6,18 +6,25 @@ services:
     image: go-mysql-crud
     ports:
       - 8005:8005
-    links:
-      - mysql
     environment:
       - "DB_PORT=3306"
-      - "DB_HOST=localhost"
+      - "DB_HOST=mysql"
       - "DB_NAME=x-charts"
       - "DB_PASS="
+    networks:
+      - mynet
+    container_name: "x-charts-api"
   
   mysql:
-    image: mariadb:latest
+    image: bitnami/mariadb:latest
     ports:
       - 3306:3306
     volumes:
-      - /Users/songwing/Downloads/workspace/volumes/mydb:/var/lib/mysql
-    
+      - /Users/songwing/Downloads/workspace/volumes/mydb:/bitnami/mariadb/data
+    networks:
+      - mynet
+    container_name: "mysql"
+    hostname: "mariadb"
+
+networks:
+    mynet:
